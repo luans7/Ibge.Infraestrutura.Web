@@ -1,11 +1,14 @@
-﻿namespace Ibge.Infraestrutura.Web.Menu
+﻿using System;
+using System.Collections.Generic;
+namespace Ibge.Infraestrutura.Web.Menu
 {
-    using System;
-    using System.Collections.Generic;
 
     public class Item : IEquatable<Item>
     {
-        private IDictionary<string, object> valoresRota;
+
+        private readonly IDictionary<string, object> valoresRota;
+
+        protected Item() { }        
 
         public Item(string titulo, string area, string controller, string action, IDictionary<string, object> valoresRota)
         {
@@ -43,14 +46,17 @@
             if (other == this)
                 return true;
 
-            return this.Titulo.Equals(other.Titulo);
+            return new { Titulo = Titulo, Controller = Controller, Action = Action }
+                .Equals(new { Titulo = other.Titulo, Controller = other.Controller, Action = other.Action });
         }
 
         public override bool Equals(object obj) => this.Equals(obj as Item);
 
-        public override int GetHashCode() => Titulo.GetHashCode();
+        public override int GetHashCode() => new { Titulo = Titulo, Controller = Controller, Action = Action }.GetHashCode();
 
-        public override string ToString() => Titulo;
+        public override string ToString() => $"{Titulo} - {Controller} - {Action}";
+
     }
+
 }
 

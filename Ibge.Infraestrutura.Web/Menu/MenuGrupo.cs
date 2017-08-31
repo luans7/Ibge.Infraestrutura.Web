@@ -9,6 +9,8 @@ namespace Ibge.Infraestrutura.Web.Menu
 
     class MenuGrupo : IEquatable<MenuGrupo>
     {
+
+        protected MenuGrupo() { }
         public MenuGrupo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -30,14 +32,15 @@ namespace Ibge.Infraestrutura.Web.Menu
             if (other == this)
                 return true;
 
-            return this.Titulo.Equals(other.Titulo);
+            return new { Titulo = Titulo}
+               .Equals(new { Titulo = other.Titulo });
         }
 
         public override bool Equals(object obj) => this.Equals(obj as MenuGrupo);
 
-        public override int GetHashCode() => Titulo.GetHashCode();
+        public override int GetHashCode() => new { Titulo = Titulo}.GetHashCode();
 
-        public override string ToString() => Titulo;
+        public override string ToString() => $"{Titulo}";
 
     }
 }
