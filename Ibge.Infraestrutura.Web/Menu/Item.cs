@@ -5,7 +5,6 @@ namespace Ibge.Infraestrutura.Web.Menu
 
     public class Item : IEquatable<Item>
     {
-
         private readonly IDictionary<string, object> valoresRota;
 
         protected Item() { }        
@@ -55,8 +54,6 @@ namespace Ibge.Infraestrutura.Web.Menu
         public override int GetHashCode() => new { Titulo = Titulo, Controller = Controller, Action = Action }.GetHashCode();
 
         public override string ToString() => $"{Titulo} - {Controller} - {Action}";
-
     }
-
 }
 

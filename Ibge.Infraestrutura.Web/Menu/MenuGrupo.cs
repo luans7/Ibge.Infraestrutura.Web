@@ -9,8 +9,10 @@ namespace Ibge.Infraestrutura.Web.Menu
 
    public class MenuGrupo : IEquatable<MenuGrupo>
    {
+        private IList<MenuSubGrupo> menusSubgrupos;
 
         protected MenuGrupo() { }
+
         public MenuGrupo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -18,11 +20,12 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             this.Titulo = titulo;
 
-
-
+            menusSubgrupos = new List<MenuSubGrupo>();
         }
+
         public virtual string Titulo { get; protected set; }
 
+        public virtual IEnumerable<MenuSubGrupo> MenusSubgrupo { get { return menusSubgrupos; } }
 
         public virtual bool Equals(MenuGrupo other)
         {
