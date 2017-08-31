@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ibge.Infraestrutura.Web.Menu
 {
-    class MenuSubGrupo : IEquatable<MenuSubGrupo>
+   public class MenuSubGrupo : IEquatable<MenuSubGrupo>
     {
         protected MenuSubGrupo() { }
         public MenuSubGrupo(string titulo)

@@ -15,10 +15,10 @@ namespace Ibge.Infraestrutura.Web.Menu
             if (string.IsNullOrWhiteSpace(titulo))
                 throw new ArgumentNullException(nameof(titulo));
 
-            if (string.IsNullOrWhiteSpace(titulo))
+            if (string.IsNullOrWhiteSpace(controller))
                 throw new ArgumentNullException(nameof(controller));
 
-            if (string.IsNullOrWhiteSpace(titulo))
+            if (string.IsNullOrWhiteSpace(action))
                 throw new ArgumentNullException(nameof(action));
 
             this.Titulo = titulo;

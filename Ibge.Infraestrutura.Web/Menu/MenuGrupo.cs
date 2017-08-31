@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 namespace Ibge.Infraestrutura.Web.Menu
 {
 
-    class MenuGrupo : IEquatable<MenuGrupo>
-    {
+   public class MenuGrupo : IEquatable<MenuGrupo>
+   {
 
         protected MenuGrupo() { }
         public MenuGrupo(string titulo)
@@ -42,5 +42,5 @@ namespace Ibge.Infraestrutura.Web.Menu
 
         public override string ToString() => $"{Titulo}";
 
-    }
+   }
 }
