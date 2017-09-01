@@ -32,5 +32,16 @@ namespace Ibge.Infraestrutura.Web.Teste.Properties
 
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("titulo");
         }
+
+        [Fact]
+        public void adicionar_menuSubGrupo()
+        {
+            Fixture fixture = new Fixture();
+            string titulo = fixture.Create<string>();
+            var menusSubGrupo = new MenuGrupo(titulo);
+            
+            
+
+        }
     }
 }

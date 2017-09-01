@@ -9,9 +9,7 @@ namespace Ibge.Infraestrutura.Web.Menu
    public class MenuSubGrupo : IEquatable<MenuSubGrupo>
     {
         private List<Item> itens; 
-
         protected MenuSubGrupo() { }
-
         public MenuSubGrupo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -20,8 +18,8 @@ namespace Ibge.Infraestrutura.Web.Menu
             this.Titulo = titulo;
 
             itens = new List<Item>();
-        }
 
+        }
         public virtual string Titulo { get; protected set; }
 
         public IEnumerable<Item> Itens { get { return itens; } }
@@ -39,9 +37,10 @@ namespace Ibge.Infraestrutura.Web.Menu
 
         public override bool Equals(object obj) => this.Equals(obj as MenuSubGrupo);
 
-        public override int GetHashCode() => Titulo.GetHashCode();
+        public override int GetHashCode() => new { Titulo = Titulo }.GetHashCode();
 
         public override string ToString() => $"{Titulo}";
+
     }
 }
 

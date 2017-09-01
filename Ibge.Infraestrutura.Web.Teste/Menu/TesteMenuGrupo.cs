@@ -32,16 +32,6 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
 
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("titulo");
         }
-        [Fact]
-        public void saber_se_ja_tem_um_menusubgrupo()
-        {
-            Fixture fixture = new Fixture();
-            string titulo = fixture.Create<string>();
-            var menu = new MenuGrupo(titulo);
-
-           
-
-        }
     }
     
 }

@@ -39,15 +39,15 @@ namespace Ibge.Infraestrutura.Web.Menu
                .Equals(new { Titulo = other.Titulo });
         }
 
-        public virtual void Adicionar(MenuSubGrupo menuSubgrupo)
+        public virtual void Adicionar(MenuSubGrupo menuSubGrupo)
         {
-            if (menuSubgrupo == null)
-                throw new ArgumentNullException(nameof(menuSubgrupo));
+            if (menuSubGrupo == null)
+                throw new ArgumentNullException(nameof(menuSubGrupo));
 
-            if (menusSubgrupos.Contains(menuSubgrupo))
+            if (menusSubgrupos.Contains(menuSubGrupo))
                 throw new InvalidOperationException("MenuSubGrupo já adicionado.");
 
-            menusSubgrupos.Add(menuSubgrupo);
+            menusSubgrupos.Add(menuSubGrupo);
         }
 
         public override bool Equals(object obj) => this.Equals(obj as MenuGrupo);
