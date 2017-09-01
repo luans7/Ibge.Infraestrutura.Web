@@ -43,7 +43,7 @@ namespace Ibge.Infraestrutura.Web.Menu
 
         public override int GetHashCode() => new { Titulo = Titulo}.GetHashCode();
 
-        public override string ToString() => $"{Titulo}";
+        public override string ToString() => $"{Titulo}";f
 
    }
 }
