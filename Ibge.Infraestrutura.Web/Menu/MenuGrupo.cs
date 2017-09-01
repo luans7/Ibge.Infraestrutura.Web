@@ -39,9 +39,20 @@ namespace Ibge.Infraestrutura.Web.Menu
                .Equals(new { Titulo = other.Titulo });
         }
 
+        public virtual void Adicionar(MenuSubGrupo menuSubgrupo)
+        {
+            if (menuSubgrupo == null)
+                throw new ArgumentNullException(nameof(menuSubgrupo));
+
+            if (menusSubgrupos.Contains(menuSubgrupo))
+                throw new InvalidOperationException("MenuSubGrupo já adicionado.");
+
+            menusSubgrupos.Add(menuSubgrupo);
+        }
+
         public override bool Equals(object obj) => this.Equals(obj as MenuGrupo);
 
-        public override int GetHashCode() => new { Titulo = Titulo}.GetHashCode();
+        public override int GetHashCode() => Titulo.GetHashCode();
 
         public override string ToString() => $"{Titulo}";
 

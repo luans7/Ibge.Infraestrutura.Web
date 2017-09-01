@@ -8,8 +8,10 @@ namespace Ibge.Infraestrutura.Web.Menu
 {
    public class MenuSubGrupo : IEquatable<MenuSubGrupo>
     {
-        private List<Item> item; 
+        private List<Item> itens; 
+
         protected MenuSubGrupo() { }
+
         public MenuSubGrupo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -17,12 +19,12 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             this.Titulo = titulo;
 
-            item = new List<Item>();
-
+            itens = new List<Item>();
         }
-        public virtual string Titulo { get; protected set; }
-        public IEnumerable<Item> Item { get { return item; } }
 
+        public virtual string Titulo { get; protected set; }
+
+        public IEnumerable<Item> Itens { get { return itens; } }
 
         public virtual bool Equals(MenuSubGrupo other)
         {
@@ -32,16 +34,14 @@ namespace Ibge.Infraestrutura.Web.Menu
             if (other == this)
                 return true;
 
-            return new { Titulo = Titulo }
-                  .Equals(new { Titulo = other.Titulo });
+            return this.Titulo.Equals(other.Titulo);
         }
 
         public override bool Equals(object obj) => this.Equals(obj as MenuSubGrupo);
 
-        public override int GetHashCode() => new { Titulo = Titulo }.GetHashCode();
+        public override int GetHashCode() => Titulo.GetHashCode();
 
         public override string ToString() => $"{Titulo}";
-
     }
 }
 

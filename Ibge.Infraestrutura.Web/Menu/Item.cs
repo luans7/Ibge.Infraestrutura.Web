@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+
 namespace Ibge.Infraestrutura.Web.Menu
 {
-
     public class Item : IEquatable<Item>
     {
         private readonly IDictionary<string, object> valoresRota;
