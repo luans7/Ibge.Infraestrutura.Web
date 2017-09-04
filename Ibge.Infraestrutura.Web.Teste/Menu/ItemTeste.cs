@@ -75,8 +75,6 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             Action criar = () => new Item(titulo, area, controller, action, valoresRota);
 
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("action");
-        }
-                              
-    }
-    
+        }                              
+    }    
 }
