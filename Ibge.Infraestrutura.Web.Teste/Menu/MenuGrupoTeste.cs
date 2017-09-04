@@ -33,7 +33,58 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("titulo");
 
         }
-            
+        [Fact]
+        public void adicionar_menuGrupo()
+        {
+            Fixture fixture = new Fixture();
+            string titulomenuGrupo = fixture.Create<string>();
+            var menuGrupo = new MenuGrupo(titulomenuGrupo);
+
+            string titulo = fixture.Create<string>();
+
+            var menuSubGrupo = new MenuSubGrupo(titulo);
+
+          
+
+            menuGrupo.Adicionar(menuSubGrupo);
+
+        }
+        [Fact]
+        public void adicionar_menusSbGrupos_com_o_mesmo_valor_no_menuGrupo()
+        {
+            Fixture fixture = new Fixture();
+            string titulomenuGrupo = fixture.Create<string>();
+            var menuGrupo = new MenuGrupo(titulomenuGrupo);
+
+            string titulo = fixture.Create<string>();
+
+            var menuSubGrupo1 = new MenuSubGrupo(titulo);
+
+            var menuSubGrupo2 = new MenuSubGrupo(titulo);
+
+            menuGrupo.Adicionar(menuSubGrupo1);
+
+            Action adicionar = () => menuGrupo.Adicionar(menuSubGrupo2);
+
+            adicionar.ShouldThrow<InvalidOperationException>().And.Message.Should().Be("MenuSubGrupo já adicionado.");
+
+        }
+        public void adicionar_menuSubGrupo_com_valor_nulo()
+        {
+            Fixture fixture = new Fixture();
+            string titulomenuGrupo = fixture.Create<string>();
+            var menuGrupo = new MenuGrupo(titulomenuGrupo);
+                       
+            MenuSubGrupo menuSubGrupo = null;
+
+            Action adicionar = () => menuGrupo.Adicionar(menuSubGrupo);
+
+            adicionar.ShouldThrow<ArgumentNullException>(nameof(menuSubGrupo));
+       
+
+
+
+        }
     }
     
 }

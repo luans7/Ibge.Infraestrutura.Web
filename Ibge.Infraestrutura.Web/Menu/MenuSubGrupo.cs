@@ -43,7 +43,7 @@ namespace Ibge.Infraestrutura.Web.Menu
             if (Itens.Contains(item))
                 throw new InvalidOperationException("Item já adicionado");
 
-            itens.Add(item);                    
+            itens.Add(item);
         }
 
         public override bool Equals(object obj) => this.Equals(obj as MenuSubGrupo);
