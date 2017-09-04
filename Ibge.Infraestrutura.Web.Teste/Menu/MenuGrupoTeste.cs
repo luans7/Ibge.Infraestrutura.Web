@@ -10,7 +10,7 @@ using Ibge.Infraestrutura.Web.Menu;
 namespace Ibge.Infraestrutura.Web.Teste.Menu
 {
    
-    public class TesteMenuGrupo
+    public class MenuGrupoTeste
     {
         [Fact]
         public void criar_um_menugrupo_com_sucesso()
@@ -31,7 +31,9 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             Action criar = () => new MenuGrupo(titulo);
 
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("titulo");
+
         }
+            
     }
     
 }

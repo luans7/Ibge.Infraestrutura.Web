@@ -49,6 +49,8 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             menusSubgrupos.Add(menuSubGrupo);
         }
+       
+
 
         public override bool Equals(object obj) => this.Equals(obj as MenuGrupo);
 

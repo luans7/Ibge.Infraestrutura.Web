@@ -75,8 +75,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Menu\ItemTeste.cs" />
-    <Compile Include="Menu\TesteMenuGrupo.cs" />
-    <Compile Include="Menu\TesteMenuSubGrupo.cs" />
+    <Compile Include="Menu\MenuGrupoTeste.cs" />
+    <Compile Include="Menu\MenuSubGrupoTeste.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">

@@ -8,8 +8,10 @@ namespace Ibge.Infraestrutura.Web.Menu
 {
    public class MenuSubGrupo : IEquatable<MenuSubGrupo>
     {
-        private List<Item> itens; 
+        private List<Item> itens;
+
         protected MenuSubGrupo() { }
+
         public MenuSubGrupo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
@@ -18,7 +20,6 @@ namespace Ibge.Infraestrutura.Web.Menu
             this.Titulo = titulo;
 
             itens = new List<Item>();
-
         }
         public virtual string Titulo { get; protected set; }
 
@@ -34,13 +35,22 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             return this.Titulo.Equals(other.Titulo);
         }
+        public virtual void Adicionar(Item item)
+        {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
+            if (Itens.Contains(item))
+                throw new InvalidOperationException("Item já adicionado");
+
+            itens.Add(item);                    
+        }
 
         public override bool Equals(object obj) => this.Equals(obj as MenuSubGrupo);
 
         public override int GetHashCode() => new { Titulo = Titulo }.GetHashCode();
 
         public override string ToString() => $"{Titulo}";
-
     }
 }
 

@@ -10,7 +10,7 @@ using Ibge.Infraestrutura.Web.Menu;
 namespace Ibge.Infraestrutura.Web.Teste.Properties
 {
     
-    public class TesteMenuSubGrupo
+    public class MenuSubGrupoTeste
     {
         [Fact]
         public void criar_um_menusubgrupo_com_sucesso()
@@ -37,9 +37,19 @@ namespace Ibge.Infraestrutura.Web.Teste.Properties
         public void adicionar_menuSubGrupo()
         {
             Fixture fixture = new Fixture();
-            string titulo = fixture.Create<string>();
-            var menusSubGrupo = new MenuGrupo(titulo);
+            string tituloMenuSubGrupo = fixture.Create<string>();
+            var menuSubGrupo = new MenuSubGrupo(tituloMenuSubGrupo);
             
+            string titulo = fixture.Create<string>();
+            string area = fixture.Create<string>();
+            string controller = fixture.Create<string>();
+            string action = fixture.Create<string>();
+            IDictionary<string, object> valoresRota = new Dictionary<string, object>();
+
+            var item = new Item(titulo, area, controller, action, valoresRota);
+
+
+            menuSubGrupo.Adicionar(item);
             
 
         }
