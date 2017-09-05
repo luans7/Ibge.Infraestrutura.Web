@@ -75,6 +75,70 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             Action criar = () => new Item(titulo, area, controller, action, valoresRota);
 
             criar.ShouldThrow<ArgumentNullException>().And.ParamName.Should().Be("action");
-        }                              
-    }    
+        }
+
+        [Fact]
+        public void adicionar_itens_no_item()
+        {
+            Fixture fixture = new Fixture();
+            string titulo = fixture.Create<string>();
+            string area = fixture.Create<string>();
+            string controller = fixture.Create<string>();
+            string action = fixture.Create<string>();
+
+            IDictionary<string, object> valoresRota = new Dictionary<string, object>();
+
+
+
+            var itens = new Item(titulo, area, controller, action, valoresRota);
+
+
+
+        }
+
+        [Fact]
+        public void adicionar_itenss_no_item()
+        {
+            Fixture fixture = new Fixture();
+            string titulo = fixture.Create<string>();
+            string area = fixture.Create<string>();
+            string controller = fixture.Create<string>();
+            string action = fixture.Create<string>();
+
+            IDictionary<string, object> valoresRota = new Dictionary<string, object>();
+            var itens = new Item(titulo, area, controller, action, valoresRota);
+
+
+            var item1 = new Item(titulo, area, controller, action, valoresRota);
+
+            var item2 = new Item(titulo, area, controller, action, valoresRota);
+
+            itens.Adicionar(item1);
+
+            Action adicionar = () => itens.Adicionar(item2);
+
+            adicionar.ShouldThrow<InvalidOperationException>().And.Message.Should().Be("item já adicionado.");
+
+        }
+        [Fact]
+        public void adicionar_itens_no_itens_com_valor_nulo()
+        {
+            Fixture fixture = new Fixture();
+            string titulo = fixture.Create<string>();
+            string area = fixture.Create<string>();
+            string controller = fixture.Create<string>();
+            string action = fixture.Create<string>();
+
+            IDictionary<string, object> valoresRota = new Dictionary<string, object>();
+            var item = new Item(titulo, area, controller, action, valoresRota);
+
+
+
+
+            Action adicionar = () => item.Adicionar(item = null);
+
+            adicionar.ShouldThrow<ArgumentNullException>(nameof(item));
+
+        }
+    }
 }

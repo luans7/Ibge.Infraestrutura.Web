@@ -4,7 +4,8 @@ using System.Collections.Generic;
 namespace Ibge.Infraestrutura.Web.Menu
 {
     public class Item : IEquatable<Item>
-    {
+    {       
+        
         private readonly IDictionary<string, object> valoresRota;
 
         protected Item() { }        
@@ -25,6 +26,9 @@ namespace Ibge.Infraestrutura.Web.Menu
             this.Controller = controller;
             this.Action = action;
             this.valoresRota = valoresRota;
+
+
+            itens = new List<Item>();
         }
 
         public virtual string Titulo { get; protected set; }
@@ -37,6 +41,9 @@ namespace Ibge.Infraestrutura.Web.Menu
 
         public virtual IDictionary<string, object> ValoresRota { get { return valoresRota; } }
 
+        public List<Item> itens { get;set;}
+
+        public virtual IEnumerable<Item> Itens { get { return itens; } }
         public virtual bool Equals(Item other)
         {
             if (other == null)
@@ -47,6 +54,17 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             return new { Titulo = Titulo, Controller = Controller, Action = Action }
                 .Equals(new { Titulo = other.Titulo, Controller = other.Controller, Action = other.Action });
+        }
+
+        public virtual void Adicionar(Item item)
+        {
+            if (item == null)
+                throw new ArgumentNullException(nameof(item));
+
+            if (itens.Contains(item))
+                throw new InvalidOperationException("item já adicionado.");
+
+            itens.Add(item);
         }
 
         public override bool Equals(object obj) => this.Equals(obj as Item);
