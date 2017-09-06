@@ -3,10 +3,11 @@ using System.Collections.Generic;
 
 namespace Ibge.Infraestrutura.Web.Menu
 {
-    public class Item : IEquatable<Item>
-    {       
-        
+    public  class Item : IEquatable<Item>
+    {        
         private readonly IDictionary<string, object> valoresRota;
+
+        private IList<Item> itens;
 
         protected Item() { }        
 
@@ -21,13 +22,14 @@ namespace Ibge.Infraestrutura.Web.Menu
             if (string.IsNullOrWhiteSpace(action))
                 throw new ArgumentNullException(nameof(action));
 
+            if (valoresRota == null)
+                throw new ArgumentException(nameof(valoresRota));
+
             this.Titulo = titulo;
             this.Area = area;
             this.Controller = controller;
             this.Action = action;
             this.valoresRota = valoresRota;
-
-
             itens = new List<Item>();
         }
 
@@ -41,9 +43,8 @@ namespace Ibge.Infraestrutura.Web.Menu
 
         public virtual IDictionary<string, object> ValoresRota { get { return valoresRota; } }
 
-        public List<Item> itens { get;set;}
-
         public virtual IEnumerable<Item> Itens { get { return itens; } }
+
         public virtual bool Equals(Item other)
         {
             if (other == null)

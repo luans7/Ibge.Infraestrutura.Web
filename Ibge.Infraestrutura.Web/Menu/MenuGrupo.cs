@@ -46,7 +46,7 @@ namespace Ibge.Infraestrutura.Web.Menu
 
             if (menusSubgrupos.Contains(menuSubGrupo))
                 throw new InvalidOperationException("MenuSubGrupo já adicionado.");
-
+            
             menusSubgrupos.Add(menuSubGrupo);
         }
        

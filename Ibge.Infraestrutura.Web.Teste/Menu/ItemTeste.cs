@@ -87,17 +87,12 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             string action = fixture.Create<string>();
 
             IDictionary<string, object> valoresRota = new Dictionary<string, object>();
-
-
-
+            
             var itens = new Item(titulo, area, controller, action, valoresRota);
-
-
-
         }
 
         [Fact]
-        public void adicionar_itenss_no_item()
+        public void adicionar_itens_nos_itens()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -121,7 +116,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
 
         }
         [Fact]
-        public void adicionar_itens_no_itens_com_valor_nulo()
+        public void adicionar_itens_nos_itens_com_valores_nulos()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -132,12 +127,25 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
             IDictionary<string, object> valoresRota = new Dictionary<string, object>();
             var item = new Item(titulo, area, controller, action, valoresRota);
 
-
-
-
             Action adicionar = () => item.Adicionar(item = null);
 
-            adicionar.ShouldThrow<ArgumentNullException>(nameof(item));
+            adicionar.ShouldThrow<ArgumentNullException>(nameof(item)); 
+
+        }
+
+        [Fact]
+        public void teste()
+        {
+            Fixture fixture = new Fixture();
+            string titulo = fixture.Create<string>();
+            string area = fixture.Create<string>();
+            string controller = fixture.Create<string>();
+            string action = fixture.Create<string>();
+
+            IDictionary<string, object> valoresRota = new Dictionary<string, object>();
+            var item = new Item(titulo, area, controller, action, valoresRota);
+
+            item.Adicionar(item);
 
         }
     }
