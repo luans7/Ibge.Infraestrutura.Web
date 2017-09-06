@@ -11,7 +11,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
     public class ItemTeste
     {
         [Fact]
-        public void criar_um_item_com_sucesso()
+        public void Criar_um_item_com_sucesso()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -32,7 +32,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void tentar_criar_um_item_com_titulo_invalido(string titulo)
+        public void Tentar_criar_um_item_com_titulo_invalido(string titulo)
         {
             Fixture fixture = new Fixture();
             string area = fixture.Create<string>();
@@ -48,7 +48,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void tentar_criar_um_item_com_controller_invalido(string controller)
+        public void Tentar_criar_um_item_com_controller_invalido(string controller)
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -64,7 +64,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void tentar_criar_um_item_com_action_invalid1(string action)
+        public void Tentar_criar_um_item_com_action_invalid1(string action)
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -78,7 +78,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void adicionar_itens_no_item()
+        public void Adicionar_itens_no_item()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -92,7 +92,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void adicionar_itens_nos_itens()
+        public void Adicionar_itens_nos_itens()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -116,7 +116,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
 
         }
         [Fact]
-        public void adicionar_itens_nos_itens_com_valores_nulos()
+        public void Adicionar_itens_nos_itens_com_valores_nulos()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -134,7 +134,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void teste()
+        public void Teste()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();

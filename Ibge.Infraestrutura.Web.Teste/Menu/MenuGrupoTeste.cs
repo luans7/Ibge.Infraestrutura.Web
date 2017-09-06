@@ -11,7 +11,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
     public class MenuGrupoTeste
     {
         [Fact]
-        public void criar_um_menugrupo_com_sucesso()
+        public void Criar_um_menugrupo_com_sucesso()
         {
             Fixture fixture = new Fixture();
             string titulo = fixture.Create<string>();
@@ -23,7 +23,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         [Theory]
         [InlineData("")]
         [InlineData(null)]
-        public void tentar_criar_um_menugrupo_com_titulo_invalido(string titulo)
+        public void Tentar_criar_um_menugrupo_com_titulo_invalido(string titulo)
         {
             Fixture fixture = new Fixture();
             Action criar = () => new MenuGrupo(titulo);
@@ -32,7 +32,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
 
         }
         [Fact]
-        public void adicionar_menuGrupo()
+        public void Adicionar_menuGrupo()
         {
             Fixture fixture = new Fixture();
             string titulomenuGrupo = fixture.Create<string>();
@@ -49,7 +49,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void adicionar_menusSbGrupos_com_o_mesmo_valor_no_menuGrupo()
+        public void Adicionar_menusSbGrupos_com_o_mesmo_valor_no_menuGrupo()
         {
             Fixture fixture = new Fixture();
             string titulomenuGrupo = fixture.Create<string>();
@@ -70,7 +70,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void adicionar_menuSubGrupo_com_valor_nulo()
+        public void Adicionar_menuSubGrupo_com_valor_nulo()
         {
             Fixture fixture = new Fixture();
             string titulomenuGrupo = fixture.Create<string>();
@@ -85,7 +85,7 @@ namespace Ibge.Infraestrutura.Web.Teste.Menu
         }
 
         [Fact]
-        public void adicionar_menusSbGrupos_no_menuGrupo()
+        public void Adicionar_menusSbGrupos_no_menuGrupo()
         {
             Fixture fixture = new Fixture();
             string titulomenuGrupo = fixture.Create<string>();
