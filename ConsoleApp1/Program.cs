@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Ibge.Infraestrutura.Web.Menu;
+using System.Linq.Expressions;
 
 namespace Ibge.Infraestrutura.Web.Console
 {
@@ -12,7 +13,7 @@ namespace Ibge.Infraestrutura.Web.Console
 
         static void Main(string[] args)
         {
-
+            //COURO
             Item item6401 = new Item("COURO - Pesquisa", " COURO", "", "", new Dictionary<string, object> { });
             Item item6402 = new Item("COURO - Cadastro", "", "", "", new Dictionary<string, object> { });
             Item item6403 = new Item("COURO - Cadastrar estabelecimento(trimestre atual)", "COURO", "CadastrarEstabelecimento", "Index", new Dictionary<string, object> { });
@@ -22,6 +23,8 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6418 = new Item("COURO - Questionário	", "", "", "", new Dictionary<string, object> { });
             Item item6419 = new Item("COURO - Preencher questionário", "COURO", "CadastrarQuestionario", "Index", new Dictionary<string, object> { });
             Item item6509 = new Item("COURO - Supervisionar questionários", "COURO", "SupervisionarQuestionarios", "Index", new Dictionary<string, object> { });
+
+            //PEVS
             Item item6179 = new Item("PEVS - Questionário", "area", "controller", "action", new Dictionary<string, object> { });
             Item item6182 = new Item("PEVS - Coleta", "PEVS", "", "", new Dictionary<string, object> { });
             Item item6185 = new Item("PEVS - Acompanhar coleta", "PEVS", "AcompanharColeta", "Index", new Dictionary<string, object> { });
@@ -39,6 +42,14 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6317 = new Item("PEVS - Maiores produtores por UF", "PEVS", "ListarMaioresProdutoresPorProdutoUf", "Index", new Dictionary<string, object> { });
             Item item6204 = new Item("PEVS - Observações produtos	", "PEVS", "ObservacoesQuestionario", "Index", new Dictionary<string, object> { });
             Item item6263 = new Item("PEVS - Resumo por Produto / UF	", "PEVS", "ListarResumoColeta", "Index", new Dictionary<string, object> { });
+            Item item6187 = new Item("PEVS - Pesquisa", "PEVS", "", "", new Dictionary<string, object> { });
+            Item item6188 = new Item("PEVS - Configuração", "", "", "", new Dictionary<string, object> { });
+            Item item6210 = new Item("PEVS - Causas código", "PEVS", "CadastrarCausaCodigo", "Index", new Dictionary<string, object> { });
+            Item item6189 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarEdicao", "Index", new Dictionary<string, object> { });
+            Item item6196 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarProduto", "Index", new Dictionary<string, object> { });
+
+
+            //POG
             Item item6352 = new Item("POG - Pesquisa", "POG", "", "", new Dictionary<string, object> { });
             Item item6353 = new Item("POG - Cadastro", "", "", "", new Dictionary<string, object> { });
             Item item6354 = new Item("POG - Cadastrar estabelecimento (trimestre atual)", "POG", "CadastrarEstabelecimento", "Index", new Dictionary<string, object> { });
@@ -55,6 +66,9 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6511 = new Item("POG - Coleta", "", "", "", new Dictionary<string, object> { });
             Item item6514 = new Item("POG - Acompanhar Coleta", "POG", "AcompanharColeta", "Index", new Dictionary<string, object> { });
             Item item6513 = new Item("POG - Crítica Comparativa", "POG", "CriticaComparativaMesMes", "Index", new Dictionary<string, object> { });
+
+
+            //PPM
             Item item6345 = new Item("PPM - Pesquisa", "PPM", "", "", new Dictionary<string, object> { });
             Item item6346 = new Item("PPM - Configuração", "", "", "", new Dictionary<string, object> { });
             Item item6347 = new Item("PPM - Cadastrar limites", "PPM", "CadastrarLimiteProduto", "Index", new Dictionary<string, object> { });
@@ -74,11 +88,9 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6397 = new Item("PPM - Imprimir questionário identificado", "PPM", "ImprimirQuestionario", "Index", new Dictionary<string, object> { });
             Item item6392 = new Item("PPM - Limites de Preço e Produtividade	", "PPM", "LimitePrecoProdutividade", "Index", new Dictionary<string, object> { });
             Item item6391 = new Item("PPM - Ranking Municípios	", "PPM", "RankingMunicipios", "Index", new Dictionary<string, object> { });
-            Item item6187 = new Item("PEVS - Pesquisa", "PEVS", "", "", new Dictionary<string, object> { });
-            Item item6188 = new Item("PEVS - Configuração", "", "", "", new Dictionary<string, object> { });
-            Item item6210 = new Item("PEVS - Causas código", "PEVS", "CadastrarCausaCodigo", "Index", new Dictionary<string, object> { });
-            Item item6189 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarEdicao", "Index", new Dictionary<string, object> { });
-            Item item6196 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarProduto", "Index", new Dictionary<string, object> { });
+
+            
+            //WTF
             Item item6214 = new Item("Administração", "", "", "", new Dictionary<string, object> { });
             Item item6197 = new Item("Geral", "", "", "", new Dictionary<string, object> { });
             Item item6198 = new Item("UF / Agência / Município", "", "ConsultaMunicipio", "Index", new Dictionary<string, object> { });
@@ -153,6 +165,22 @@ namespace Ibge.Infraestrutura.Web.Console
             item6214.Adicionar(item6214);
             item6197.Adicionar(item6197);
             item6198.Adicionar(item6198);
+
+            List<Item> pesquisa = new List<Item>();
+            pesquisa.Add(item6401);
+
+           Console.W  
+          
+            
+
+
+
+            //http://teste.sigcconfig.ibge.gov.br/menu  //
+
+            //http://www.macoratti.net/16/05/vbn_arvbin.htm
+
+            //https://www.desenvolvedormatteus.com.br/loja-compras-em-c-e-windows-forms/
+
         }
     }
 }
