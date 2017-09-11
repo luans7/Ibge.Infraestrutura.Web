@@ -11,7 +11,7 @@ namespace Ibge.Infraestrutura.Web.Console
     class Program
     {
 
-        static void Main(string[] args)
+        static void Main(string[]args)
         {
             //COURO
             Item item6401 = new Item("COURO - Pesquisa", " COURO", "", "", new Dictionary<string, object> { });
@@ -169,13 +169,14 @@ namespace Ibge.Infraestrutura.Web.Console
             List<Item> pesquisa = new List<Item>();
             pesquisa.Add(item6401);
 
-           Console.W  
-          
-            
+           C
 
 
 
-            //http://teste.sigcconfig.ibge.gov.br/menu  //
+
+
+
+            //http://teste.sigcconfig.ibge.gov.br/menu  //2130939
 
             //http://www.macoratti.net/16/05/vbn_arvbin.htm
 
