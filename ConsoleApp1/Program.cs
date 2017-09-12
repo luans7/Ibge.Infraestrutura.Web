@@ -208,6 +208,8 @@ namespace Ibge.Infraestrutura.Web.Console
 
 
             Imprimir(itemSistema);
+           
+
 
             ///->SISTEMA
             ///-->PESQUISA
@@ -226,7 +228,8 @@ namespace Ibge.Infraestrutura.Web.Console
             ///----->ITENS
             ///----->...
             ///-->PESQUISA
-            ///...
+            ///
+
 
 
 
@@ -241,10 +244,19 @@ namespace Ibge.Infraestrutura.Web.Console
 
         public static void Imprimir(Item item)
         {
-            System.Console.WriteLine(item.Titulo);
-            Ssy
+            var item2= new List<Item>(); 
 
+            System.Console.WriteLine(item.Titulo);
+
+            System.Console.WriteLine(item2.Contains(item));
             System.Console.ReadLine();
+
+
+
+
+
+
+
         }
     }
 }
