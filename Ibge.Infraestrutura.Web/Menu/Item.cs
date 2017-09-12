@@ -3,34 +3,24 @@ using System.Collections.Generic;
 
 namespace Ibge.Infraestrutura.Web.Menu
 {
-    public  class Item : IEquatable<Item>
-    {        
+    public class Item : IEquatable<Item>
+    {
         private readonly IDictionary<string, object> valoresRota;
 
         private IList<Item> itens;
 
-        protected Item() { }        
+        protected Item() { }
 
         public Item(string titulo, string area, string controller, string action, IDictionary<string, object> valoresRota)
         {
             if (string.IsNullOrWhiteSpace(titulo))
                 throw new ArgumentNullException(nameof(titulo));
 
-            if (string.IsNullOrWhiteSpace(controller))
-                throw new ArgumentNullException(nameof(controller));
-
-            if (string.IsNullOrWhiteSpace(action))
-                throw new ArgumentNullException(nameof(action));
-
-            if (valoresRota == null)
-                throw new ArgumentException(nameof(valoresRota));
-
             this.Titulo = titulo;
             this.Area = area;
             this.Controller = controller;
             this.Action = action;
             this.valoresRota = valoresRota;
-            itens = new List<Item>();
         }
 
         public virtual string Titulo { get; protected set; }
@@ -61,6 +51,9 @@ namespace Ibge.Infraestrutura.Web.Menu
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
+
+            if (this.itens == null)
+                this.itens = new List<Item>();
 
             if (itens.Contains(item))
                 throw new InvalidOperationException("item já adicionado.");
