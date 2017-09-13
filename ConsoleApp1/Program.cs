@@ -242,20 +242,13 @@ namespace Ibge.Infraestrutura.Web.Console
 
         }
 
-        public static void Imprimir(Item item)
+        public static void Imprimir(Item itemMenu)
         {
-            var item2= new List<Item>(); 
 
-            System.Console.WriteLine(item.Titulo);
+            foreach (var item in itemMenu.Itens)
+            {
 
-            System.Console.WriteLine(item2.Contains(item));
-            System.Console.ReadLine();
-
-
-
-
-
-
+            } 
 
         }
     }
