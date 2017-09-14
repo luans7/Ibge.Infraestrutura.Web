@@ -208,8 +208,8 @@ namespace Ibge.Infraestrutura.Web.Console
 
 
             Imprimir(itemSistema);
-           
 
+            System.Console.ReadKey();
 
             ///->SISTEMA
             ///-->PESQUISA
@@ -244,13 +244,14 @@ namespace Ibge.Infraestrutura.Web.Console
 
         public static void Imprimir(Item itemMenu)
         {
+            System.Console.WriteLine(itemMenu.Titulo);
 
             foreach (var item in itemMenu.Itens)
             {
-
-            } 
-
+                Imprimir(item);                    
+            }            
         }
+
     }
 }
   

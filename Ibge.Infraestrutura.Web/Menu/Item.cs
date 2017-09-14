@@ -7,7 +7,7 @@ namespace Ibge.Infraestrutura.Web.Menu
     {
         private readonly IDictionary<string, object> valoresRota;
 
-        private IList<Item> itens;
+        private IList<Item> itens = new List<Item>();
 
         protected Item() { }
 
@@ -51,9 +51,6 @@ namespace Ibge.Infraestrutura.Web.Menu
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item));
-
-            if (this.itens == null)
-                this.itens = new List<Item>();
 
             if (itens.Contains(item))
                 throw new InvalidOperationException("item já adicionado.");
