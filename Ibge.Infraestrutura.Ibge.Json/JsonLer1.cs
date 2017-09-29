@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp2
+namespace Ibge.Infraestrutura.Ibge.Json
 {
-    class Program
+    class JsonLer
     {
-        static void Main(string[] args)
-        {
-        }
     }
 }

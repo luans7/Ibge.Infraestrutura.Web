@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{16365A4C-D7B4-4851-BA4A-4B8F94EC38C7}</ProjectGuid>
+    <ProjectGuid>{784DBFA6-F305-4CCB-B118-0F229CC343E2}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>ConsoleApp1</RootNamespace>
-    <AssemblyName>ConsoleApp1</AssemblyName>
+    <RootNamespace>Ibge.Infraestrutura.Web.Json</RootNamespace>
+    <AssemblyName>Ibge.Infraestrutura.Web.Json</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -32,16 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,14 +47,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="packages.config" />
+    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ConsoleApp1\Ibge.Infraestrutura.Web.Console.csproj">
+      <Project>{16365a4c-d7b4-4851-ba4a-4b8f94ec38c7}</Project>
+      <Name>Ibge.Infraestrutura.Web.Console</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Ibge.Infraestrutura.Web\Ibge.Infraestrutura.Web.csproj">
-      <Project>{78DF26BD-BFC6-46E9-A60D-C3975939483D}</Project>
+      <Project>{78df26bd-bfc6-46e9-a60d-c3975939483d}</Project>
       <Name>Ibge.Infraestrutura.Web</Name>
     </ProjectReference>
   </ItemGroup>

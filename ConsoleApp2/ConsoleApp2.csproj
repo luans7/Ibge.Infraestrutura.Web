@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{CE755316-9424-4217-857F-F4A9BC7D0EB4}</ProjectGuid>
+    <ProjectGuid>{7455E1AB-BB65-44E1-8B18-D33A782509BD}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsoleApp2</RootNamespace>
     <AssemblyName>ConsoleApp2</AssemblyName>
@@ -32,7 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Accessibility" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -48,16 +47,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ConsoleApp1\Ibge.Infraestrutura.Web.Console.csproj">
-      <Project>{16365a4c-d7b4-4851-ba4a-4b8f94ec38c7}</Project>
-      <Name>Ibge.Infraestrutura.Web.Console</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Ibge.Infraestrutura.Web\Ibge.Infraestrutura.Web.csproj">
-      <Project>{78df26bd-bfc6-46e9-a60d-c3975939483d}</Project>
-      <Name>Ibge.Infraestrutura.Web</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

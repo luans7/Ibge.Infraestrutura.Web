@@ -5,14 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using Ibge.Infraestrutura.Web.Menu;
 using System.Linq.Expressions;
+using System.IO;
+using Newtonsoft.Json;
+using System.Runtime.Serialization.Json;
+using System.Web.Script.Serialization;
+
 
 namespace Ibge.Infraestrutura.Web.Console
 {
     class Program
     {
 
-        static void Main(string[]args)
-        {
+        static void Main(string[] args)
+        { 
+
+
             //SISTEMA
             Item itemSistema = new Item("Sistema", "", "", "", null);
             //ADMINISTRAÇÃO
@@ -21,7 +28,7 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6198 = new Item("UF / Agência / Município", "", "ConsultaMunicipio", "Index", null);
             item6214.Adicionar(item6197);
             item6197.Adicionar(item6198);
-          
+
             //Couro
             Item itemCouro = new Item("COURO", "COURO", "", "", null);
             //COURO-PESQUISA
@@ -29,12 +36,12 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6402 = new Item("COURO - Cadastro", "", "", "", null);
             Item item6403 = new Item("COURO - Cadastrar estabelecimento(trimestre atual)", "COURO", "CadastrarEstabelecimento", "Index", null);
             Item item6410 = new Item("COURO - Cadastrar estabelecimento (trimestres anteriores)", "area", "controller", "action", null);
-            Item item6404 = new Item("COURO - Cadastrar informante Web", "", "CadastrarInformante", "Index", new Dictionary<string, object> { { "pesquisa", 8 } });          
+            Item item6404 = new Item("COURO - Cadastrar informante Web", "", "CadastrarInformante", "Index", new Dictionary<string, object> { { "pesquisa", 8 } });
             //COURO-QUESTIONÁRIO
             Item item6418 = new Item("COURO - Questionário	", "", "", "", null);
             Item item6417 = new Item("COURO - Questionário", "COURO", "", "", null);
             Item item6419 = new Item("COURO - Preencher questionário", "COURO", "CadastrarQuestionario", "Index", null);
-            Item item6509 = new Item("COURO - Supervisionar questionários", "COURO", "SupervisionarQuestionarios", "Index", null);                   
+            Item item6509 = new Item("COURO - Supervisionar questionários", "COURO", "SupervisionarQuestionarios", "Index", null);
             //COURO-PESQUISA
             item6401.Adicionar(item6402);
             item6402.Adicionar(item6403);
@@ -49,9 +56,9 @@ namespace Ibge.Infraestrutura.Web.Console
             itemCouro.Adicionar(item6418);
             itemCouro.Adicionar(item6214);
             itemSistema.Adicionar(itemCouro);
-           
+
             //PEVS
-            Item itemPevs = new Item("PEVS", "PEVS", "", "", null); 
+            Item itemPevs = new Item("PEVS", "PEVS", "", "", null);
             //PEVS-QUESTIONÁRIO
             Item item6179 = new Item("PEVS - Questionário", "area", "controller", "action", null);
             //PEVS-QUESTIONÁRIO-COLETA
@@ -59,10 +66,10 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6185 = new Item("PEVS - Acompanhar coleta", "PEVS", "AcompanharColeta", "Index", null);
             Item item6180 = new Item("PEVS - Cadastrar questionário", "PEVS", "CadastrarQuestionario", "Index", null);
             Item item6318 = new Item("PEVS - Supervisionar questionários", "PEVS", "AnalisarQuestionario", "Index", null);
-            Item item6181 = new Item("PEVS - Visualizar questionário", "PEVS", "VisualizarQuestionario", "Index", null);        
+            Item item6181 = new Item("PEVS - Visualizar questionário", "PEVS", "VisualizarQuestionario", "Index", null);
             //PEVS-QUESTIONÁRIO-COLETA-APURAÇÃO
             Item item6190 = new Item("PEVS - Apuração", "", "", "", null);
-            Item item6191 = new Item("PEVS - Prorrogar período de coleta", "PEVS", "ProrrogarColeta", "Index", null);           
+            Item item6191 = new Item("PEVS - Prorrogar período de coleta", "PEVS", "ProrrogarColeta", "Index", null);
             //PEVS-RELATÓRIO-GERAIS
             Item item6192 = new Item("PEVS - Relatório", "PEVS", "", "", null);
             Item item6193 = new Item("PEVS - Gerais	", "", "", "", null);
@@ -72,14 +79,14 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6316 = new Item("PEVS - Maiores produtores", "PEVS", "ListarMaioresProdutoresPorProduto", "Index", null);
             Item item6317 = new Item("PEVS - Maiores produtores por UF", "PEVS", "ListarMaioresProdutoresPorProdutoUf", "Index", null);
             Item item6204 = new Item("PEVS - Observações produtos	", "PEVS", "ObservacoesQuestionario", "Index", null);
-            Item item6263 = new Item("PEVS - Resumo por Produto / UF	", "PEVS", "ListarResumoColeta", "Index", null);          
+            Item item6263 = new Item("PEVS - Resumo por Produto / UF	", "PEVS", "ListarResumoColeta", "Index", null);
             //PEVS-PESQUISA-CONFIGURAÇÃO
             Item item6187 = new Item("PEVS - Pesquisa", "PEVS", "", "", null);
             Item item6188 = new Item("PEVS - Configuração", "", "", "", null);
             Item item6210 = new Item("PEVS - Causas código", "PEVS", "CadastrarCausaCodigo", "Index", null);
             Item item6189 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarEdicao", "Index", null);
-            Item item6196 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarProduto", "Index", null);           
-           //PEVS-QUESTIONÁRIO-COLETA
+            Item item6196 = new Item("PEVS - Edição pesquisa", "PEVS", "CadastrarProduto", "Index", null);
+            //PEVS-QUESTIONÁRIO-COLETA
             item6179.Adicionar(item6182);
             item6182.Adicionar(item6185);
             item6182.Adicionar(item6180);
@@ -116,21 +123,21 @@ namespace Ibge.Infraestrutura.Web.Console
             Item item6354 = new Item("POG - Cadastrar estabelecimento (trimestre atual)", "POG", "CadastrarEstabelecimento", "Index", null);
             Item item6355 = new Item("POG - Cadastrar estabelecimento (trimestres anteriores)	", "POG", "CadastrarEstabelecimentoPeriodoAnterior", "Index", null);
             Item item6357 = new Item("POG - Cadastrar empresa integradora/cooperativa	", "POG", "CadastrarIntegradora", "Index", null);
-            Item item6356 = new Item("POG - Cadastrar informante Web", "POG", "controlleCadastrarInformanter", "Index", new Dictionary<string, object> { { "pesquisa", 9 } });            
+            Item item6356 = new Item("POG - Cadastrar informante Web", "POG", "controlleCadastrarInformanter", "Index", new Dictionary<string, object> { { "pesquisa", 9 } });
             //POG-QUESTIONÁRIO-QUESTIONÁRIO
             Item item6424 = new Item("POG - Questionário", "POG", "", "", null);
-            Item item6425 = new Item("POG - Questionário", "", "", "", null);
-            Item item6426 = new Item("POG - Preencher questionário", "POG", "CadastrarQuestionario", "Index", null);    
+            Item item6425 = new Item("POG - Supervisionar questionário", "POG", "SupervisionarQuestionário", "", null);
+            Item item6426 = new Item("POG - Preencher questionário", "POG", "Preencher questionário", "Index", null);
             //POG-RELATÓRIO
-            Item item6393 = new Item("POG - Relatório", "POG", "", "", null);            
+            Item item6393 = new Item("POG - Relatório", "POG", "", "", null);
             //POG-RELATÓRIO-CADATRAIS
             Item item6394 = new Item("POG - Cadastrais	", "", "", "", null);
             Item item6512 = new Item("POG - Informantes Centralizados", "POG", "InformantesCentralizados", "Index", null);
-            Item item6395 = new Item("POG - Integradoras", "POG", "CadastrarIntegradora", "ListarEstabelecimentosPorIntegradora", null);            
+            Item item6395 = new Item("POG - Integradoras", "POG", "CadastrarIntegradora", "ListarEstabelecimentosPorIntegradora", null);
             //POG-RELATÓRIO-COLETA
             Item item6511 = new Item("POG - Coleta", "", "", "", null);
             Item item6514 = new Item("POG - Acompanhar Coleta", "POG", "AcompanharColeta", "Index", null);
-            Item item6513 = new Item("POG - Crítica Comparativa", "POG", "CriticaComparativaMesMes", "Index", null);           
+            Item item6513 = new Item("POG - Crítica Comparativa", "POG", "CriticaComparativaMesMes", "Index", null);
             //POG-PESQUISA-CADASTRO
             item6352.Adicionar(item6353);
             item6353.Adicionar(item6354);
@@ -206,10 +213,17 @@ namespace Ibge.Infraestrutura.Web.Console
             itemPpm.Adicionar(item6214);
             itemSistema.Adicionar(itemPpm);
 
+            // Cria o nome do arquivo com ano, mês, dia, hora minuto e segundo
 
-            Imprimir(itemSistema);
 
-            System.Console.ReadKey();
+
+            // Agora é só sair escrevendo
+
+
+
+            
+
+
 
             ///->SISTEMA
             ///-->PESQUISA
@@ -233,25 +247,208 @@ namespace Ibge.Infraestrutura.Web.Console
 
 
 
-
             //http://teste.sigcconfig.ibge.gov.br/menu  //2130939
 
             //http://www.macoratti.net/16/05/vbn_arvbin.htm
 
             //https://www.desenvolvedormatteus.com.br/loja-compras-em-c-e-windows-forms/
 
+
+           
+            // Serialize it.  
+
+
+            
+            
+           
+            
+       
+
+            System.Console.ReadLine();
+
+
+
+
+
+           
+
+            int opcao;
+            string output = JsonConvert.SerializeObject(itemSistema);
+            Item deserializedItem = JsonConvert.DeserializeObject<Item>(output);
+            string tiulo = deserializedItem.Titulo;
+            string area = deserializedItem.Area;
+            string controller = deserializedItem.Controller;
+            string action = deserializedItem.Action;
+            do
+            {
+                System.Console.WriteLine("Digite uma opção: ");
+                System.Console.WriteLine("[ 1 ] Escrever Arquivo"); 
+                System.Console.WriteLine("[ 2 ] Ler Arquivo");
+                System.Console.WriteLine("[ 3 ] Alterar Arquivo");
+                System.Console.WriteLine("[ 4 ] Imprimir Arquivo");
+                System.Console.WriteLine("[ 5 ] Remover");
+                System.Console.WriteLine("[ 0 ] Sair do Programa");
+                System.Console.WriteLine("-------------------------------------");                
+                opcao = Int32.Parse(System.Console.ReadLine());
+                switch (opcao)
+                {
+                    case 1:
+                        System.Console.WriteLine("Escolha o nome do Arquivo:");
+                        string caminho3 = System.Console.ReadLine();
+                        //Declaração do método StreamWriter passando o caminho e nome do arquivo que deve ser salvo
+                        StreamWriter writer = new StreamWriter(caminho3 + DateTime.Now.ToString("_yyyy_MM_dd_HH_mm_ss") + ".Json");
+                        //Escrevendo o Arquivo e pulando uma linha
+                        writer.WriteLine(output);                                            
+                        //Fechando o arquivo
+                        writer.Close();
+                        //Limpando a referencia dele da memória
+                        writer.Dispose();
+                        escreverArquivo();
+                        break;
+                    case 2:
+                        //usando a instrução using os recursos são liberados após a conclusão da operação
+
+                        System.Console.WriteLine("Informe o Arquivo:");
+                        string caminho = System.Console.ReadLine();
+                        StreamReader leitor = new StreamReader(caminho);                     
+                        System.Console.WriteLine(deserializedItem);
+                        lerArquivo(itemSistema);
+                        System.Console.ReadLine();
+                        break;
+                    case 3:
+
+                        System.Console.WriteLine("Informe o Arquivo:");
+                        string caminho2 = System.Console.ReadLine();
+                        StreamReader leito2r = new StreamReader(caminho2);
+                        StreamReader leitor2 = new StreamReader(@"xpto.Json", Encoding.GetEncoding("iso-8859-1"));
+
+                        //Stream que gerará o arquivo modificado
+                        StreamWriter Escreve = new StreamWriter("xpto.Text");
+
+                        //Variável que recebe a linha lida naquele momento
+                        String Linha = "";
+
+                        //Enquanto não for o final do arquivo original
+                        while (!(leitor2.EndOfStream))
+                        {
+                            //Linhar recebe a linha lida naquela interação
+                            Linha = leitor2.ReadLine();
+
+                            // Aqui define se a linha atual será escrita, ou não
+                            if (!(Linha.Substring(0, 0) == leitor2.ReadLine()))
+                            {
+                                Escreve.WriteLine(output.ToString());
+                            }
+                        }
+                        //Fecha o stream de leitura
+                        leitor2.Close();
+                        //Fecha o stream de escrita.
+                        Escreve.Close();
+                        alterarArquivo();
+                        break;
+                    case 4:
+                        imprimir(itemSistema);
+                       
+                        break;
+                        case 5:
+                        imprimir(itemPog);
+                        imprimir(itemPevs);
+                        imprimir(itemCouro);
+                        imprimir(itemPpm);
+                        System.Console.WriteLine("Digite Objeto que queira remover");
+                    
+
+                        string deletaItem = System.Console.ReadLine();
+                        Item toDelete = itemSistema.Find(a => itemSistema.Titulo == deletaItem );
+                        deletaItem.Remove();
+                        
+                        System.Console.WriteLine(deletaItem+ "Foi Removido");
+                        
+                        
+                        break;
+                    case 6:
+                        System.Console.Write(  itemPog +   itemPog.Titulo+ itemPog.Area+ itemPog.Controller+ itemPog.ValoresRota );
+                    
+
+                        break;
+
+                    default:
+                        sairPrograma();
+                        break;
+                }
+                System.Console.ReadKey();
+                System.Console.Clear();
+            }
+            while (opcao != 0);
         }
 
-        public static void Imprimir(Item itemMenu)
+        private static void sairPrograma()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine("Bye Bye, vc saiu do Programa. Clique qq tecla para sair...");
+        }
+
+        private static void lerArquivo(Item itemMenu2)
+        {
+            System.Console.WriteLine(itemMenu2.Titulo);
+            foreach (var item in itemMenu2.Itens)
+            {
+                imprimir(item);
+                System.Console.WriteLine();
+                System.Console.WriteLine("Digitou a opção de  Ler Arquivo");
+            }
+           
+        }
+
+        private static void escreverArquivo()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine("Digitou a opção de Escrever Arquivo");
+        }
+        private static void alterarArquivo()
+        {
+            System.Console.WriteLine();
+            System.Console.WriteLine("Digitou a opção de Alterar Arquivo");
+        }
+
+        public static void imprimir(Item itemMenu)
         {
             System.Console.WriteLine(itemMenu.Titulo);
-
             foreach (var item in itemMenu.Itens)
             {
-                Imprimir(item);                    
-            }            
+                imprimir(item);
+            }
+        }
+        private static void remover(Item itemMenu2)
+        {
+          
+        }
+           
         }
 
     }
-}
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+    //Recursivo  
+    
+
+    
+    
+    
+
+ 
+
+
   
